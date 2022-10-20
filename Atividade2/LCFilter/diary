@@ -1,0 +1,474 @@
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Failed. 
+Error:   Name=C1     Netlist Name=C 
+	Error: Parameter values can not be all zeros in RLC branch C1 
+ 
+ 
+simulations
+    <strong>Vcc</strong>    <strong>Ro</strong>       <strong>Lf</strong>            <strong>Cf</strong>    
+    <strong>___</strong>    <strong>__</strong>    <strong>_________</strong>    <strong>__________</strong>
+
+    350    5     0.0022547    3.1207e-05
+
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Failed. 
+Error:   Name=C3     Netlist Name=C 
+	Error: Parameter values can not be all zeros in RLC branch C3 
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Failed. 
+Error:   Name=C1     Netlist Name=C 
+	Error: Parameter values can not be all zeros in RLC branch C1 
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+Warning:  The time step has been changed to 8.333300E-006     
+ 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: 3PhaseInverterPWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
+Circuit: HalfBridgePWM
+
+File Open Successful. 
+Simulation Successful. 
+ 
