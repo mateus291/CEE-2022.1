@@ -11,11 +11,13 @@ def run_simulation(schematic: str, output: str, variables:dict={},
 Vn = 220.0;     Pn = 4100.0;    Lf1 = 3.0e-3;   Lf2 = 2.0e-3
 Cf  = 2.2e-6;   Rd  = 10.0;     ma  = 0.95;     fs  = 5000.0
 Vcc = 1.01 * (Vn * np.sqrt(2) / ma);            Ro = (Vn ** 2) / Pn
+theta = 0.0
 
 ## Operação na Potência nominal:
 nominal_op = {
     "ma": ma, "fs": fs, "Vcc": Vcc, "Lf1": Lf1,
     "Lf2": Lf2, "Cf": Cf, "Rd": Rd, "Ro": Ro,
+    "theta": theta,
 }
 output_nom = "data/nominal/sim.txt"
 
@@ -26,6 +28,7 @@ varying_P = [
         "variables": {
             "ma": ma, "fs": fs, "Vcc": Vcc, "Lf1": Lf1,
             "Lf2": Lf2, "Cf": Cf, "Rd": Rd, "Ro": (Vn ** 2) / p_i,
+            "theta": theta,
         },
         "output": f"data/varying_load/sim_{int(p_i)}.txt",
     } for p_i in P
@@ -38,6 +41,7 @@ varying_fs = [
         "variables": {
             "ma": ma, "fs": fs_i, "Vcc": Vcc, "Lf1": Lf1,
             "Lf2": Lf2, "Cf": Cf, "Rd": Rd, "Ro": Ro,
+            "theta": theta,
         },
         "output": f"data/varying_fs/sim_{int(fs_i)}.txt",
     } for fs_i in fs_
