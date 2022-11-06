@@ -11,18 +11,19 @@ Vo = NominalOp_simdata.Vo_;
 [wthd_, ~, ~] = wthd(Vo, 60, 1/1e-5, 30);
 [f, V_mag, V_phase] = spectrum(Vo, 1/1e-5);
 
-figure('Name', 'Espectro de Vo', 'Position', [100, 200, 600, 400]);
+fig1 = ...
+figure('Name', 'Espectro de Vo', 'Position', [50, 200, 600, 400]);
 subplot(211);
 plot(f, V_mag / sqrt(2), 'LineWidth', 1.5); grid on;
 xlim([0 11*60]); ylabel('mag(V_{rms})');
+
+title('Espectro da tensão V_{o1} de saída do filtro LCL (potência nominal)');
 
 subplot(212);
 plot(f, (180/pi) * V_phase, 'LineWidth', 1.5); grid on;
 xlim([0 11*60]); ylabel('\theta(º)');
 
 xlabel('f(Hz)');
-title_ = sprintf('Espectro de saída do filtro LCL (WTHD = %.1f%%)', 100*wthd_);
-title(title_);
 
 %% Variando a carga:
 
@@ -42,14 +43,17 @@ for i = 1:numel(P)
     Vo_phase(i) = (180/pi) * hp(1);
 end
 
+fig2 = ...
 figure('Name', 'Efeito da variação de carga em Vo', ...
-    'Position', [700, 200, 600, 400]);
+    'Position', [650, 200, 600, 400]);
 yyaxis left
-plot(P, Vo_mag, 'LineWidth', 1.5); grid on;
+p = plot(P, Vo_mag, 'LineWidth', 1.5); grid on;
 ylabel('Mag (V_{rms})');
+datatip(p, 4100, 219.615);
 yyaxis right
-plot(P, Vo_phase, 'LineWidth', 1.5); grid on;
-ylabel('\theta(º)');
+p = plot(P, Vo_phase, 'LineWidth', 1.5); grid on;
+ylabel('\theta(º)'); ylim([76, 86]);
+datatip(p, 4100, 81.19, 'Location','southwest');
 
 xlabel('P(W)');
 title('Efeito da variação da carga sobre V_{o1}');
@@ -74,16 +78,23 @@ for i = 1:numel(fs)
     Vo_phase(i) = (180/pi) * hp(1);
 end
 
+fig3 = ...
 figure('Name', 'Efeito da variação de fs em Vo', ...
-    'Position', [700, 200, 600, 400]);
+    'Position', [1250, 200, 600, 400]);
 yyaxis left
-plot(fs, Vo_mag, 'LineWidth', 1.5); grid on;
+p = plot(fs, Vo_mag, 'LineWidth', 1.5); grid on;
 ylabel('Mag (V_{rms})');
+datatip(p, 3750, 220); datatip(p, 5000, 220); datatip(p, 6250, 220);
 yyaxis right
 plot(fs, Vo_phase, 'LineWidth', 1.5); grid on;
-ylabel('\theta(º)');
+ylabel('\theta(º)'); ylim([76, 86]);
 
 xlabel('f_s(Hz)');
 title('Efeito da variação da frequência de chaveamento sobre V_{o1}');
 
-%%
+%% Salvando imagens:
+
+saveas(fig1, "Imagens/nominal.png");
+saveas(fig2, "Imagens/varying_load.png");
+saveas(fig3, "Imagens/varying_fs.png");
+

@@ -8,9 +8,9 @@ def run_simulation(schematic: str, output: str, variables:dict={},
     os.system(f'PsimCmd -i "{schematic}" -o "{output}" {variables_str} -t "{total_time}" -s "{time_step}"')
 
 ## Parâmetros (operação nominal):
-Vn = 220.0; Pn = 4100.0; Lf1 = 3.0e-3; Lf2 = 2.0e-3
-Cf  = 2.2e-6; Rd  = 10.0; ma  = 0.95; fs  = 5000.0
-Vcc = 1.01 * (Vn * np.sqrt(2) / ma); Ro = (Vn ** 2) / Pn
+Vn = 220.0;     Pn = 4100.0;    Lf1 = 3.0e-3;   Lf2 = 2.0e-3
+Cf  = 2.2e-6;   Rd  = 10.0;     ma  = 0.95;     fs  = 5000.0
+Vcc = 1.01 * (Vn * np.sqrt(2) / ma);            Ro = (Vn ** 2) / Pn
 
 ## Operação na Potência nominal:
 nominal_op = {
@@ -19,8 +19,8 @@ nominal_op = {
 }
 output_nom = "data/nominal/sim.txt"
 
-# Variando a carga (+/- 20% da Potência nominal):
-P = [ (1 + 0.01 * r) * Pn for r in range(-20, 22, 2)]
+# Variando a carga (+/- 50% da Potência nominal):
+P = [ (1 + 0.01 * r) * Pn for r in range(-50, 51, 1)]
 varying_P = [
     {
         "variables": {
