@@ -55,10 +55,10 @@ schematic = "UnipolarFullBridge.psimsch"
 if __name__ == "__main__":
     run_simulation(schematic, output_nom, variables=nominal_op)
 
-    # for vars in varying_P:
-    #     run_simulation(schematic, vars["output"], variables=vars["variables"])
+    for vars in varying_P:
+        run_simulation(schematic, vars["output"], variables=vars["variables"])
     
-    # for vars in varying_fs:
-    #     run_simulation(schematic, vars["output"], variables=vars["variables"])
+    for vars in varying_fs:
+        run_simulation(schematic, vars["output"], variables=vars["variables"])
 
 
