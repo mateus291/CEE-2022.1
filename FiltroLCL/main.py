@@ -12,8 +12,6 @@ Vn = 220.0;     Pn = 4100.0;    Lf1 = 3.0e-3;   Lf2 = 2.0e-3
 Cf  = 2.2e-6;   Rd  = 10.0;     ma  = 0.95;     fs  = 5000.0
 Vcc = 1.01 * (Vn * np.sqrt(2) / ma);            Ro = (Vn ** 2) / Pn
 theta = 0.0
-## Para correção de fase na operação nominal:
-## theta = -81.1896
 
 ## Operação na Potência nominal:
 nominal_op = {

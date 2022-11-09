@@ -49,11 +49,9 @@ figure('Name', 'Efeito da variação de carga em Vo', ...
 yyaxis left
 p = plot(P, Vo_mag, 'LineWidth', 1.5); grid on;
 ylabel('Mag (V_{rms})');
-datatip(p, 4100, 219.615);
 yyaxis right
 p = plot(P, Vo_phase, 'LineWidth', 1.5); grid on;
-ylabel('\theta(º)'); ylim([76, 86]);
-datatip(p, 4100, 81.19, 'Location','southwest');
+ylabel('\theta(º)');
 
 xlabel('P(W)');
 title('Efeito da variação da carga sobre V_{o1}');
@@ -84,10 +82,10 @@ figure('Name', 'Efeito da variação de fs em Vo', ...
 yyaxis left
 p = plot(fs, Vo_mag, 'LineWidth', 1.5); grid on;
 ylabel('Mag (V_{rms})');
-datatip(p, 3750, 220); datatip(p, 5000, 220); datatip(p, 6250, 220);
+
 yyaxis right
 plot(fs, Vo_phase, 'LineWidth', 1.5); grid on;
-ylabel('\theta(º)'); ylim([76, 86]);
+ylabel('\theta(º)');
 
 xlabel('f_s(Hz)');
 title('Efeito da variação da frequência de chaveamento sobre V_{o1}');
