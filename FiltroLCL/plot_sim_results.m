@@ -8,7 +8,7 @@ NominalOp_simdata = readtable("data\nominal\sim.txt");
 
 Vo = NominalOp_simdata.Vo_;
 t = NominalOp_simdata.Time;
-[~, ref_idx] = min(abs(t - 4/60));
+[~, ref_idx] = min(abs(t - 3/60));
 
 [f, Vo_mag] = spectrum(Vo, 1/1e-5);
 Vo_phase = asin(Vo(ref_idx)/max(Vo_mag)) * (180/pi);
@@ -40,10 +40,10 @@ for i = 1:numel(P)
     t = varyingP_simdata.Time;
 
     [~, hm] = wthd(Vo, 60, 1/1e-5, 1);
-    [~, ref_idx] = min(abs(t - 4/60));
+    [~, ref_idx] = min(abs(t - 3/60));
 
     Vo_mag(i) = hm(1) / sqrt(2);
-    Vo_phase(i) = asin(Vo(ref_idx)/max(Vo_mag)) * (180/pi);
+    Vo_phase(i) = asin(Vo(ref_idx)/hm(1)) * (180/pi);
 end
 
 fig2 = ...
@@ -52,9 +52,11 @@ figure('Name', 'Efeito da variação de carga em Vo', ...
 yyaxis left
 p = plot(P, Vo_mag, 'LineWidth', 1.5); grid on;
 ylabel('Mag (V_{rms})');
+datatip(p, 4100, 219.6, 'Location','northeast');
 yyaxis right
 p = plot(P, Vo_phase, 'LineWidth', 1.5); grid on;
-ylabel('\theta(º)');
+ylabel('\theta(º)'); ylim([-14, -4]);
+datatip(p, 4100, -9.07, 'Location','southwest');
 
 xlabel('P(W)');
 title('Efeito da variação da carga sobre V_{o1}');
@@ -78,10 +80,10 @@ for i = 1:numel(fs)
     t = varyingFs_simdata.Time;
 
     [~, hm] = wthd(Vo, 60, 1/1e-5, 1);
-    [~, ref_idx] = min(abs(t - 4/60));
+    [~, ref_idx] = min(abs(t - 3/60));
 
     Vo_mag(i) = hm(1) / sqrt(2);
-    Vo_phase(i) = asin(Vo(ref_idx)/max(Vo_mag)) * (180/pi);
+    Vo_phase(i) = asin(Vo(ref_idx)/hm(1)) * (180/pi);
 end
 
 fig3 = ...
@@ -90,10 +92,11 @@ figure('Name', 'Efeito da variação de fs em Vo', ...
 yyaxis left
 p = plot(fs, Vo_mag, 'LineWidth', 1.5); grid on;
 ylabel('Mag (V_{rms})');
+datatip(p, 5000, 219.6, 'Location', 'northeast');
 
 yyaxis right
 plot(fs, Vo_phase, 'LineWidth', 1.5); grid on;
-ylabel('\theta(º)');
+ylabel('\theta(º)'); ylim([-14, -4]);
 
 xlabel('f_s(Hz)');
 title('Efeito da variação da frequência de chaveamento sobre V_{o1}');

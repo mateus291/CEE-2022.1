@@ -8,7 +8,7 @@ NominalOp_simdata = readtable("data\nominal\sim.txt");
 
 Vo = NominalOp_simdata.Vo_;
 t = NominalOp_simdata.Time;
-[~, ref_idx] = min(abs(t - 4/60));
+[~, ref_idx] = min(abs(t - 3/60));
 
 [f, Vo_mag] = spectrum(Vo, 1/1e-5);
 Vo_phase = asin(Vo(ref_idx)/max(Vo_mag)) * (180/pi);
@@ -40,10 +40,10 @@ for i = 1:numel(P)
     t = varyingP_simdata.Time;
 
     [~, hm] = wthd(Vo, 60, 1/1e-5, 1);
-    [~, ref_idx] = min(abs(t - ))
+    [~, ref_idx] = min(abs(t - 3/60));
 
     Vo_mag(i) = hm(1) / sqrt(2);
-    Vo_phase(i) = asin(Vo());
+    Vo_phase(i) = asin(Vo(ref_idx)/hm(1)) * (180/pi);
 end
 
 fig2 = ...
@@ -67,16 +67,21 @@ files = string(ls("data/varying_fs"));
 files = files(startsWith(files, "sim"));
 fs = double(extract(files, digitsPattern));
 
-clear Vo Vo_mag Vo_phase
+clear Vo Vo_mag Vo_phase t ref_idx
 Vo_mag = zeros(numel(fs), 1);
 Vo_phase = zeros(numel(fs), 1);
 
 for i = 1:numel(fs)
     varyingFs_simdata = readtable(strcat("data/varying_fs/", files(i)));
+    
     Vo = varyingFs_simdata.Vo_;
-    [~, hm, hp] = wthd(Vo, 60, 1/1e-5, 1);
+    t = varyingFs_simdata.Time;
+
+    [~, hm] = wthd(Vo, 60, 1/1e-5, 1);
+    [~, ref_idx] = min(abs(t - 3/60));
+
     Vo_mag(i) = hm(1) / sqrt(2);
-    Vo_phase(i) = (180/pi) * hp(1);
+    Vo_phase(i) = asin(Vo(ref_idx)/hm(1)) * (180/pi);
 end
 
 fig3 = ...
