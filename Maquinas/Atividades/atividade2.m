@@ -1,4 +1,4 @@
-%close all
+close all
 clear all
 clc
 
@@ -46,7 +46,7 @@ wm=0;		%velocidade da maquina
 ce = 0; ws= 2*pi*60; 
 Vsm = 220*sqrt(2);  
 Vs = Vsm; % Tensão de pico de uma fase do estator
-Vf = 50; % Tensão do rotor
+Vf = 50; % Tensão do rotor (maq. ind. Vf = 0; mac. sinc. Vf = 50)
 thetae = 0; thetar = 0; 
 
 isodq = zeros(3, 1); fsodq = zeros(3, 1);
@@ -57,13 +57,13 @@ irodq = zeros(3, 1); frodq = zeros(3, 1);
 h = 1.e-4;  % 1.e-4; 2.e-4; 5.e-4;
 % h = input('entre com o periodo de discretizacao h  ')
 
-tmax = 4;
+tmax = 3;
 % tmax = input('entre com o tempo de simulacao (tmax)  ')
 
 t = 0:h:tmax;
 
 % Número de amostras para exposição dos resultados:
-N = 8000;
+N = 5000;
 % N = input('entre com o número de amostras para os gráficos (N)  ')
 hp = tmax / N; tp = 0; % <- tempo de amostragem de saída
 jp = 1;
@@ -88,15 +88,14 @@ for j = 1:length(t)
         Vs*cos(thetae-(2*pi/3));
         Vs*cos(thetae+(2*pi/3))
     ];
+%     if(t(j) > tmax/2) % Abertura da fase 1 em t = tmax/2
+%         vs123(1) = Vs*cos(thetae) - 100*is123(1);
+%     end
     vsodq = (P(0)')*vs123;
     
     % Tensões rotor:
     vr123 = [Vf; -Vf/2; -Vf/2];
     vrodq = (P(-thetar)')*vr123;
-    
-    % Correntes:
-	isodq = as*(fsodq-bs*frodq); isd = isodq(2); isq = isodq(3);
-    irodq = ar*(frodq-br*fsodq); ird = irodq(2); irq = irodq(3);
 	
     % Diferenciais:
     diff_fsodq = vsodq - rs*isodq;
@@ -106,11 +105,15 @@ for j = 1:length(t)
     fsodq = fsodq + diff_fsodq*h;
     frodq = frodq + diff_frodq*h;
 
+    % Correntes:
+	isodq = as*(fsodq-bs*frodq); isd = isodq(2); isq = isodq(3);
+    irodq = ar*(frodq-br*fsodq); ird = irodq(2); irq = irodq(3);
+
     % Conjugado eletromagnético:
 	ce = p*msr*(isq*ird - isd*irq);
 
-    % Adição de conjugado mecânico em t = tmax/2:
-    if(t(j) > tmax/2)
+    
+    if(t(j) > tmax/2) % Adição de conjugado mecânico em t = tmax/2
         cm = 40;
     end
 

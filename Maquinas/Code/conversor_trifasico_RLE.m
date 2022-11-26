@@ -5,10 +5,14 @@
 % ___________________________________________________________
 
 clear all
+close all
+clc
 
 t=0;            %tempo inicial de simulacao
 tmax=0.3;       %tempo final simulacao
 h=1.e-6;        %passo de calculo 
+
+mi = 1;
 
 % parametros da amarzenagem de curvas
 hp=tmax/20000;  	
@@ -99,7 +103,7 @@ while t<=tmax,
             vgref = [vg1ref, vg2ref, vg3ref];
             vn0ref_max=Ed/2 - max(vgref);
             vn0ref_min=-Ed/2 - min(vgref);
-            vn0ref_med=(vn0ref_max+vn0ref_min)/2;
+            vn0ref_med = mi*vn0ref_max + (1-mi)*vn0ref_min;
 
             %geração das tensões de pólo de referencia
             vg10ref=vg1ref+vn0ref_med;  
@@ -215,27 +219,27 @@ end
 
 figure(1),plot(tempo,corrente1,tempo,corrente2,tempo,corrente3),grid,zoom
 title('correntes');
-pause
+
 
 figure(2),plot(tempo,tensaog1ref,tempo,tensaog2ref,tempo,tensaog3ref),grid,zoom
 title('tensoes ref');
-pause
+
 
 figure(3),plot(tempo,tensao1,tempo,tensao2,tempo,tensao3),grid,zoom
 title('tensoes de fase gerada pelo conversor');
-pause
+
 
 figure(4),plot(tempo,tensao1),grid,zoom
 title('tensão de fase gerada pelo converso - fase 1');
-pause
+
 
 figure(5),plot(tempo,tensaog1ref,tempo,tensaog1_m),grid,zoom
 title('tensoes ref e medida - fase 1');
-pause
+
 
 figure(6),plot(tempo,tensaog2ref,tempo,tensaog2_m),grid,zoom
 title('tensoes ref e medida - fase 2');
-pause
+
 
 figure(7),plot(tempo,tensaog3ref,tempo,tensaog3_m),grid,zoom
 title('tensoes ref e medida - fase 3');
