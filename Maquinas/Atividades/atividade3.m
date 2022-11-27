@@ -2,6 +2,8 @@ close all
 clear all
 clc
 
+dirName = 'Imagens/atividade3/';
+
 %% Constantes
 
 wg  = 2*pi*50;          % Frequência da tensão da fonte
@@ -11,75 +13,79 @@ Igm = 20;               % Corrente nominal
 pg  = 3*Vgm*Igm;        % Potência nominal
 Zgm = Vgm/Igm;          % Impedância nominal
 
-% Parâmetros do indutor da fonte:
+% Parâmetros do indutor da fonte RLE:
 rg = 0.01*Zgm
 lg =  0.1*Zgm/wg
 
 % Parâmetros do PWM:
 fpwm = 10000;  % Hz    % Frequência de chaveamento
 
-%% Sinais
 
-% Fonte triangular:
-vtri = @(t) (Ed/2)*sawtooth(2*pi*fpwm*t, 1/2);
+%% Parâmetros de simulação
+h = 1e-6; tmax = 0.5; t = (0:h:tmax)';
 
-% Sinal trifásico senoidal:
-v3p = @(t, theta) [
-    cos(wg*t + theta),...
-    cos(wg*t - 2*pi/3 + theta),...
-    cos(wg*t + 2*pi/3 + theta)
+%% Fonte RLE
+egj = Vgm*[
+    cos(wg*t), cos(wg*t - 2*pi/3), cos(wg*t + 2*pi/3)
 ];
 
-%% Parâmetros configuráveis:
-% Fase da referência:
-delta = -2*(pi/180)
+%% Conversor trifásico (Circuito 1)
+% Tensão do conversor defasada em 5° da fonte, com ponto zero conectado ao
+% neutro da carga (Circuito 1).
 
-% Parâmetro da tensão de referência do neutro:
-mi_v = [0, 1, 0.5];
+delta = -5*(pi/180); arm4 = 0; mi = 0;
+[vgj, vgj0] = conv3p(Vgm,wg,delta,Ed,fpwm,arm4,mi,t);
 
-%% Simulação
-% Parâmetros da simulação:
-tmax = 0.5; h = 1e-6; t = (0:h:tmax)';
-tpwm = (1/fpwm)*floor(t*fpwm);
+%% Simulação (Circuito 1)
+% Calculando a corrente (integração numérica):
+igj = zeros(length(t),3);
+for j = 1:(length(t)-1)
+    diff_igj = (egj(j,:) - vgj(j,:) - rg*igj(j,:))/lg;
+    igj(j+1,:) = igj(j,:) + diff_igj*h;
+end
 
-egj     = Vgm*v3p(t, 0);
-vgjref  = Vgm*v3p(tpwm, delta);
+%% Resultados (Circuito 1)
+[wthd_igj,~] = wthd(igj(floor(length(igj)/2):end,1), 50, 1/h, 21);
 
-vn0ref_max =  Ed/2 - max(vgjref, [], 2);
-vn0ref_min = -Ed/2 - min(vgjref, [], 2);
-
-figure('Position',[400,70,800,800]); trange = [450 500]; %ms
+fig = figure('Position',[100,300,1800,400]); 
+trange = [400 500]; %ms
 irange = [-inf inf]; % Amperes
-for i = 1:3
-    mi = mi_v(i); % parâmetro mi atual
+
+plot(1000*t, igj, 'LineWidth', 0.8);
+grid on; xlim(trange); ylim(irange);
+xlabel('t(ms)'); ylabel('i_{gj}(A)'); 
+title(['Correntes na carga (wthd = ', num2str(100*wthd_igj),'%)']);
+
+saveas(fig,strcat(dirName,'no4thArm.png'));
+
+
+%% Conversor trifásico (Circuito 2)
+% Tensão do conversor defasada em 5° da fonte, com adição de um quarto
+% braço
+delta = -5*(pi/180); arm4 = 1; miv = [0,1,0.5];
+
+for i = 1:length(miv)
+
+    mi = miv(i);
+    [vgj, vgj0] = conv3p(Vgm,wg,delta,Ed,fpwm,arm4,mi,t);
     
-    % Tensão de referência entre neutros:
-    vn0ref = mi*vn0ref_max + (1-mi)*vn0ref_min;
-    
-    vgj0ref = vgjref + vn0ref;  % Tensão de polo de referência
-    
-    q = (vgj0ref >= vtri(t));   % estado das chaves
-    vgj0 = (2*q - 1)*(Ed/2);    % tensão de polo
-    vn0 = sum(vgj0,2)/3;        % tensão de neutro
-    
-    vgj = vgj0 - vn0; % tensão de fase
-    
+    %% Simulação (Circuito 2)
     % Calculando a corrente (integração numérica):
     igj = zeros(length(t),3);
     for j = 1:(length(t)-1)
         diff_igj = (egj(j,:) - vgj(j,:) - rg*igj(j,:))/lg;
         igj(j+1,:) = igj(j,:) + diff_igj*h;
     end
-
+    
+    %% Resultados (Circuito 2)
     [wthd_igj,~] = wthd(igj(floor(length(igj)/2):end,1), 50, 1/h, 21);
-    disp(['mi: ', num2str(mi),' -> wthd: ', num2str(100*wthd_igj), '%']);
-
-    subplot(3,1,i);
+    
+    fig = figure('Position',[100,300,1800,400]);    
     plot(1000*t, igj, 'LineWidth', 0.8);
     grid on; xlim(trange); ylim(irange);
     xlabel('t(ms)'); ylabel('i_{gj}(A)'); 
-    title(['Correntes na carga (\mu = ', num2str(mi), ', wthd = ',...
-        num2str(100*wthd_igj),'%)']);
-end
+    title(['Correntes na carga (wthd = ', num2str(100*wthd_igj),'%)']);
+    
+    saveas(fig,strcat(dirName,sprintf('4thArm_mi(%.2f).png', mi)));
 
-%%
+end
